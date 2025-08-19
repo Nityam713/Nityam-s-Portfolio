@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  web:
+    image: php:8.2-apache
+    container_name: designprac-web
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/var/www/html
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: designprac-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: designdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: designprac-phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    restart: always
+    depends_on:
+      - db
+
+volumes:
+  db_data:
