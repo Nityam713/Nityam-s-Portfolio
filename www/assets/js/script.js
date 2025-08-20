@@ -28,12 +28,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Language toggle functionality (placeholder for future implementation)
+    // Language toggle functionality
     const langToggle = document.getElementById('langToggle');
     if (langToggle) {
         langToggle.addEventListener('click', function() {
-            // Language switching logic will be implemented here
-            console.log('Language toggle clicked');
+            const currentLang = this.querySelector('.lang-current');
+            const altLang = this.querySelector('.lang-alt');
+            
+            // Toggle between EN and JP
+            if (currentLang.textContent === 'EN') {
+                currentLang.textContent = 'JP';
+                altLang.textContent = 'EN';
+                showLanguageMessage('Japanese version coming soon!', 'jp');
+            } else {
+                currentLang.textContent = 'EN';
+                altLang.textContent = 'JP';
+                // No message when switching back to English
+            }
+            
+            // Add visual feedback
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 200);
         });
+    }
+    
+    // Function to show language change message
+    function showLanguageMessage(message, lang) {
+        // Remove existing message if any
+        const existingMessage = document.querySelector('.lang-message');
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+        
+        // Create new message
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `lang-message lang-message-${lang}`;
+        messageDiv.textContent = message;
+        
+        // Insert after the language toggle button
+        const langToggleContainer = document.querySelector('.lang-toggle-container');
+        langToggleContainer.appendChild(messageDiv);
+        
+        // Remove message after 3 seconds
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.remove();
+            }
+        }, 1000);
     }
 }); 

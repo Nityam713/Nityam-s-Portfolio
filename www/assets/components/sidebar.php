@@ -2,7 +2,7 @@
 <aside class="sidebar active" data-sidebar="">
     <div class="sidebar-info">
         <figure class="avatar-box">
-            <img class="avatar-box-img" src="/assets/images/dp.JPEG" alt="Nityam Handa">
+            <img class="avatar-box-img" src="/assets/images/cvpic/dp.JPEG" alt="Nityam Handa">
         </figure>
 
         <div class="info-content">
@@ -41,6 +41,7 @@
                 <div class="contact-info">
                     <p class="contact-title">Phone</p>
                     <a href="tel:+817091214071" class="contact-link">+81 7091214071</a>
+                    <a href="tel:+919871154994" class="contact-link">+91 9871154994</a>
                 </div>
             </li>
 
@@ -71,20 +72,20 @@
 
         <ul class="social-list">
             <li class="social-item">
-                <a href="#" target="_blank" class="social-link">
-                    <img src="/assets/images/github-logo.png" width="25" height="25">
+                <a href="https://github.com/Nityam713?tab=repositories" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
                 </a>
             </li>
 
             <li class="social-item">
                 <a href="https://www.linkedin.com/in/nityam-h-ab3b82157/" target="_blank" class="social-link">
-                    <img src="/assets/images/linkedin.png" width="25" height="25">
+                    <i class="fab fa-linkedin"></i>
                 </a>
             </li>
 
             <li class="social-item">
                 <a href="#" target="_blank" class="social-link">
-                    <img src="/assets/images/instagram.png" width="25" height="25">
+                    <i class="fab fa-instagram"></i>
                 </a>
             </li>
         </ul>
