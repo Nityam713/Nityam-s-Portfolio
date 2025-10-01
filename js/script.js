@@ -1,17 +1,20 @@
 // ===== SCROLL TO TOP ON PAGE LOAD/REFRESH =====
-window.addEventListener('beforeunload', function () {
-    window.scrollTo(0, 0);
-});
-
-// Force scroll to top on page load
-if (history.scrollRestoration) {
+// Disable browser's scroll restoration
+if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
+// Immediately scroll to top on page load (before any scripts run)
+window.scrollTo(0, 0);
+
+// Also scroll to top after page is fully loaded
 window.addEventListener('load', function () {
-    setTimeout(function() {
-        window.scrollTo(0, 0);
-    }, 0);
+    window.scrollTo(0, 0);
+});
+
+// Ensure scroll to top before page unload (for refresh)
+window.addEventListener('beforeunload', function () {
+    window.scrollTo(0, 0);
 });
 
 // ===== SMOOTH SCROLLING FOR NAVIGATION LINKS =====
@@ -285,7 +288,7 @@ class ProjectPagination {
         }
         
         this.createDots();
-        this.showPage(1);
+        this.showPage(1, false); // Don't scroll on initial load
         this.attachEventListeners();
     }
     
@@ -300,7 +303,7 @@ class ProjectPagination {
         }
     }
     
-    showPage(pageNum) {
+    showPage(pageNum, shouldScroll = true) {
         this.currentPage = pageNum;
         
         // Hide all projects
@@ -317,15 +320,17 @@ class ProjectPagination {
         // Update pagination UI
         this.updatePaginationUI();
         
-        // Smooth scroll to projects section
-        const projectsSection = document.getElementById('projects');
-        if (projectsSection) {
-            const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-            const targetPosition = projectsSection.offsetTop - navHeight - 20;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+        // Smooth scroll to projects section only if requested
+        if (shouldScroll) {
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                const targetPosition = projectsSection.offsetTop - navHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     }
     
