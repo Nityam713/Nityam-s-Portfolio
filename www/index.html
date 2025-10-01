@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nityam's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <main class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar active" data-sidebar="">
+            <div class="sidebar-info">
+                <figure class="avatar-box">
+                    <img class="avatar-box-img" src="images/profile.jpg" alt="Nityam Handa">
+                </figure>
+
+                <div class="info-content">
+                    <h1 class="name" title="Nityam Handa">Nityam Handa</h1>
+                    <p class="title">System Engineer</p>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="sidebar-info_more">
+                <ul class="contacts-list">
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Email</p>
+                            <a href="mailto:nityamhanda01@gmail.com" class="contact-link">nityamhanda01@gmail.com</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-phone"></i>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Phone</p>
+                            <a href="tel:+817091214071" class="contact-link">+81 7091214071</a>
+                            <a href="tel:+919871154994" class="contact-link">+91 9871154994</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Birthday</p>
+                            <time datetime="2000-01-13">Jan 13, 2000</time>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Location</p>
+                            <address>Osaka, Japan</address>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="separator"></div>
+
+                <ul class="social-list">
+                    <li class="social-item">
+                        <a href="https://github.com/Nityam713?tab=repositories" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+
+                    <li class="social-item">
+                        <a href="https://www.linkedin.com/in/nityam-h-ab3b82157/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+
+                    <li class="social-item">
+                        <a href="#" target="_blank" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main">
+            <div class="top-controls">
+                <div class="lang-toggle-container">
+                    <button class="lang-toggle-btn" id="langToggle">
+                        <span class="lang-current">EN</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-alt">JP</span>
+                    </button>
+                </div>
+                
+                <div class="tab-navigation">
+                    <a href="#" class="tab-link active" data-tab="about">About</a>
+                    <span class="tab-separator">|</span>
+                    <a href="#" class="tab-link" data-tab="resume">Resume</a>
+                    <span class="tab-separator">|</span>
+                    <a href="#" class="tab-link" data-tab="portfolio">Portfolio</a>
+                </div>
+            </div>
+            
+            <div class="tab-content">
+                <!-- About Tab -->
+                <div class="tab-pane active" id="about-tab">
+                    <div class="about-section">
+                        <div class="about-header">
+                            <h2 class="section-title">About Me</h2>
+                            <p class="about-description">
+                                Data and system professional with over 4 years of experience in full-stack development, data analysis, and AI data training. Skilled in Python, SQL, Power BI, web development, and API integration, delivering scalable and user-friendly solutions. Successfully developed high-quality datasets for AI/LLM models, optimized data workflows to boost productivity, and implemented responsive web applications with backend integrations. Known for problem-solving, adaptability, and collaboration, consistently improving processes and ensuring reliable, production-ready outcomes.
+                            </p>
+                        </div>
+
+                        <div class="core-competencies">
+                            <h5 class="competencies-title">Core Competencies</h5>
+                            
+                            <ul class="competencies-list">
+                                <li><strong>Data Analysis & Visualization:</strong> Python, SQL, Power BI for actionable insights and reporting</li>
+                                <li><strong>Web Development:</strong> Frontend and backend development, responsive UI, API integration</li>
+                                <li><strong>Database Management:</strong> Design, integration, and optimization of relational and NoSQL databases</li>
+                                <li><strong>AI & Machine Learning Support:</strong> Data annotation, synthetic dataset creation, quality assurance for AI/LLM models</li>
+                                <li><strong>System Design & Implementation:</strong> Scalable, user-friendly system development with production-ready deployments</li>
+                                <li><strong>Workflow Optimization:</strong> Process improvement, automation, and efficient data handling</li>
+                                <li><strong>Problem Solving & Analytical Thinking:</strong> Identifying issues, root cause analysis, and solution delivery</li>
+                                <li><strong>Collaboration & Teamwork:</strong> Cross-functional coordination for seamless project execution</li>
+                                <li><strong>Code Quality & Testing:</strong> Ensuring maintainable, reliable, and efficient code</li>
+                                <li><strong>Continuous Learning & Adaptability:</strong> Staying updated with new tools, frameworks, and best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Tab -->
+                <div class="tab-pane" id="resume-tab">
+                    <div class="resume-section">
+                        <div class="resume-container">
+                            <h2 class="resume-title">Resume</h2>
+                            <a href="resume.pdf" class="resume-link" download>
+                                <i class="fas fa-file-pdf"></i> Download Resume
+                            </a>
+                        </div>
+                        
+                        <div class="work-experience">
+                            <h3>Work Experience</h3>
+                            
+                            <div class="job">
+                                <h4>System Engineer | System Design & Development</h4>
+                                <p class="job-meta">株式会社Re:view | Oct 2024 – Present</p>
+                                <ul>
+                                    <li>Designing and developing web applications with both frontend and backend responsibilities.</li>
+                                    <li>Implementing REST APIs and integrating databases for scalable system performance.</li>
+                                    <li>Building responsive, user-friendly interfaces using modern frontend frameworks.</li>
+                                    <li>Collaborating with cross-functional teams to deliver full-stack solutions.</li>
+                                    <li>Ensuring code quality, testing, and deployment best practices for production-ready systems.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job">
+                                <h4>AI Data Trainer - JP | Rufus and Alexa Shopping</h4>
+                                <p class="job-meta">Amazon | Jan 2023 – Oct 2024 (1 yr 10 mos) | Gurugram, Haryana, India</p>
+                                <ul>
+                                    <li>Developed high-quality datasets for AI and LLMs to enhance Amazon Japan's shopping experience.</li>
+                                    <li>Ensured data accuracy with precise annotation and validation for AI-driven features.</li>
+                                    <li>Created synthetic data to optimize AI responses, improving customer interactions.</li>
+                                    <li>Streamlined data workflows, boosting productivity in data generation and annotation.</li>
+                                    <li>Solved data quality issues, ensuring consistent, reliable training data for AI.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="job">
+                                <h4>SEPO Associate – JP | Product Authentication</h4>
+                                <p class="job-meta">Amazon | June 2021 – Dec 2022 | Gurugram, Haryana, India</p>
+                                <ul>
+                                    <li>Conducted comprehensive research and risk assessments for Japan market seller accounts, implementing effective mitigation strategies.</li>
+                                    <li>Analyzed performance metrics to derive actionable data insights, contributing to the achievement of business objectives.</li>
+                                    <li>Provided translation services for Japanese documents and collaborated with suppliers to verify critical documents such as invoices and receipts.</li>
+                                    <li>Applied problem-solving skills to address business challenges, emphasizing root cause analysis and forward-looking opportunities.</li>
+                                    <li>Implemented systematic approaches to enhance data visibility and reporting, streamlining processes for efficient information dissemination.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="work-experience">
+                            <h3>Education</h3>
+                            <div class="job">
+                                <h4>Post Graduate Diploma in Management – Business Analytics</h4>
+                                <p class="job-meta">Institute of Management and Technologies, Ghaziabad | 2020 – 2022 | Delhi, India</p>
+                            </div>
+                            <div class="job">
+                                <h4>Bachelor of Commerce (B.Com)</h4>
+                                <p class="job-meta">University of Delhi | 2017 – 2020 | New Delhi, India</p>
+                            </div>
+                            <div class="job">
+                                <h4>JLPT N3 Certified</h4>
+                                <p class="job-meta">Japan Foundation | Dec 2019</p>
+                            </div>
+                        </div>
+
+                        <div class="work-experience">
+                            <h3>Skills</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>SQL</li>
+                                <li>Power BI</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>JavaScript</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Tab -->
+                <div class="tab-pane" id="portfolio-tab">
+                    <div class="portfolio-section">
+                        <h1 class="portfolio-title">Portfolio</h1>
+                        
+                        <!-- Personal Projects Section -->
+                        <div class="projects-section">
+                            <h2 class="section-title">Personal Projects</h2>
+                            <div class="projects-grid">
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <img src="https://picsum.photos/300/200?random=1" alt="Project 1">
+                                    </div>
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3 class="project-title">Project 1</h3>
+                                            <a href="#" class="github-link" target="_blank">
+                                                <i class="fab fa-github"></i> View on GitHub
+                                            </a>
+                                        </div>
+                                        <p class="project-description">Description 1</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <img src="https://picsum.photos/300/200?random=2" alt="Project 2">
+                                    </div>
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3 class="project-title">Project 2</h3>
+                                            <a href="#" class="github-link" target="_blank">
+                                                <i class="fab fa-github"></i> View on GitHub
+                                            </a>
+                                        </div>
+                                        <p class="project-description">Description 2</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-card">
+                                    <div class="project-image">
+                                        <img src="images/images.jpeg" alt="Project 3">
+                                    </div>
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3 class="project-title">International Debt Statistics</h3>
+                                            <p class="project-description">Analyzing international debt statistics to gain insights into the global debt landscape.</p>
+                                            <a href="https://github.com/Nityam713/International-Debt-Statistics" class="github-link" target="_blank">
+                                                <i class="fab fa-github"></i> View on GitHub
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Collaborative Projects Section -->
+                        <div class="projects-section">
+                            <h2 class="section-title">Collaborative Projects</h2>
+                            <div class="projects-grid">
+                            <div class="project-card">
+                                <div class="project-image">
+                                    <img src="images/dms.png" alt="Data Market Square">
+                                </div>
+                                    <div class="project-content">
+                                        <div class="project-header">
+                                            <h3 class="project-title"><a href="https://www.dm-square.com/" target="_blank">Data Market Square</a></h3>
+                                        </div>
+                                        <p class="project-description">Company website with CMS, blog system, and contact management for client.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

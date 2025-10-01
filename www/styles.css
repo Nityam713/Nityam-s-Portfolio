@@ -700,9 +700,10 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin-bottom: 30px;
+    align-items: start;
 }
 
 .project-card {
@@ -739,6 +740,10 @@ body {
 
 .project-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
 .project-title {
@@ -750,6 +755,12 @@ body {
     display: inline-block;
     margin-right: 15px;
     vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex-grow: 1;
+    max-width: 100%;
 }
 
 .project-title a {
@@ -766,8 +777,12 @@ body {
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 40px;
+    flex-shrink: 0;
 }
 
 .project-description {
@@ -776,6 +791,31 @@ body {
     line-height: 1.5;
     margin: 0;
     margin-bottom: 15px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Show max 4 lines */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* Fallback for browsers without -webkit-line-clamp */
+    max-height: calc(1.5em * 4); /* 4 lines max */
+}
+
+/* Fallback for browsers that don't support -webkit-line-clamp */
+@supports not (-webkit-line-clamp: 4) {
+    .project-description {
+        display: block;
+        position: relative;
+    }
+    
+    .project-description::after {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: var(--bg-card);
+        padding-left: 20px;
+    }
 }
 
 .github-link {
@@ -791,6 +831,8 @@ body {
     border-radius: 6px;
     transition: all 0.3s ease;
     vertical-align: top;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .github-link:hover {
@@ -814,12 +856,18 @@ body {
 
 @media (max-width: 768px) {
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 20px;
     }
     
     .project-image {
         height: 180px;
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
 
