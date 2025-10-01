@@ -1,12 +1,42 @@
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Old files (keeping for reference, but not deploying)
+www/
+
+# Node modules (if you add Node.js later)
+node_modules/
+package-lock.json
+
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Environment variables
 .env
+.env.local
+.env.*.local
 
-# OS files
-.DS_Store
-Thumbs.db
+# Build files
+dist/
+build/
 
-# Docker volumes / database data
-db_data/
+# Misc
+*.bak
+*.tmp
+.cache/
