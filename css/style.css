@@ -222,6 +222,7 @@ ul {
 
 .nav-menu {
     display: flex;
+    align-items: center;
     gap: var(--spacing-lg);
 }
 
@@ -671,7 +672,6 @@ ul {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all var(--transition-base);
-    margin-left: var(--spacing-lg);
     box-shadow: 0 4px 16px rgba(0, 245, 255, 0.3);
 }
 
@@ -917,7 +917,18 @@ ul {
     font-weight: 700;
     color: var(--lightest-slate);
     margin-bottom: var(--spacing-2xl);
-    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.competencies-title::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
 }
 
 .competencies-grid {
@@ -1059,8 +1070,21 @@ ul {
 
 .education-title {
     font-size: var(--fs-3xl);
+    font-weight: 700;
     color: var(--lightest-slate);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    position: relative;
+    display: inline-block;
+}
+
+.education-title::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
 }
 
 .education-grid {
@@ -1663,11 +1687,45 @@ ul {
     }
     
     .nav-menu {
-        display: none;
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: rgba(17, 34, 64, 0.98);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+        padding: 2rem 0;
+        gap: 1rem;
+        z-index: 998;
+        border-top: 2px solid var(--accent);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+        font-size: var(--fs-base);
+    }
+    
+    .nav-menu .resume-download-btn {
+        margin: 0.5rem auto;
+        display: inline-flex;
     }
     
     .hamburger {
         display: flex;
+        z-index: 999;
     }
     
     .hero {
@@ -1713,27 +1771,7 @@ ul {
         letter-spacing: 2px;
     }
     
-    /* Resume button - mobile positioning */
-    .resume-download-btn {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1rem;
-        left: auto;
-        margin-left: 0;
-        padding: 0.75rem 1rem;
-        font-size: 10px;
-        letter-spacing: 0.8px;
-        z-index: 999;
-    }
-    
-    .resume-download-btn svg {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .resume-download-btn:hover {
-        transform: translateY(-2px);
-    }
+    /* Resume button - appears in mobile menu, no fixed positioning needed */
     
     .section {
         padding: var(--spacing-xl) 0;

@@ -57,9 +57,16 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        console.log('Hamburger clicked!'); // Debug log
+        
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        
+        console.log('Menu active:', navMenu.classList.contains('active')); // Debug log
         
         // Toggle hamburger animation
         const bars = hamburger.querySelectorAll('.bar');
@@ -75,50 +82,30 @@ if (hamburger && navMenu) {
         });
     });
     
-    // Close menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            
-            const bars = hamburger.querySelectorAll('.bar');
-            bars.forEach(bar => {
-                bar.style.transform = 'none';
-                bar.style.opacity = '1';
-            });
+    // Close menu when clicking on a link or resume button
+    const closeMenu = () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        
+        const bars = hamburger.querySelectorAll('.bar');
+        bars.forEach(bar => {
+            bar.style.transform = 'none';
+            bar.style.opacity = '1';
         });
+    };
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
+    
+    // Also close menu when clicking resume button
+    const resumeBtn = document.querySelector('.resume-download-btn');
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', closeMenu);
+    }
 }
 
-// Mobile menu styles
-const style = document.createElement('style');
-style.textContent = `
-    @media (max-width: 768px) {
-        .nav-menu {
-            position: fixed;
-            left: -100%;
-            top: 70px;
-            flex-direction: column;
-            background-color: rgba(17, 34, 64, 0.98);
-            width: 100%;
-            text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
-            padding: 2rem 0;
-            gap: 1rem;
-        }
-        
-        .nav-menu.active {
-            left: 0;
-        }
-        
-        .nav-link {
-            display: block;
-            padding: 1rem;
-        }
-    }
-`;
-document.head.appendChild(style);
+// Mobile menu styles are now in CSS file
 
 // ===== SCROLL REVEAL ANIMATION =====
 const observerOptions = {
