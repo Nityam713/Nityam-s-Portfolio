@@ -699,6 +699,44 @@ ul {
     50% { transform: translateY(4px); }
 }
 
+/* ===== LANGUAGE TOGGLE BUTTON IN NAVBAR ===== */
+.lang-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: rgba(100, 255, 218, 0.1);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-lg);
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 16px rgba(100, 255, 218, 0.2);
+}
+
+.lang-toggle-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-base);
+}
+
+.lang-toggle-btn:hover {
+    background: rgba(100, 255, 218, 0.2);
+    border-color: var(--electric-cyan);
+    color: var(--electric-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(100, 255, 218, 0.4), 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+.lang-toggle-btn:hover svg {
+    transform: rotate(180deg);
+}
+
 /* ===== ABOUT SECTION ===== */
 .about {
     background-color: var(--light-navy);
@@ -1719,6 +1757,11 @@ ul {
     }
     
     .nav-menu .resume-download-btn {
+        margin: 0.5rem auto;
+        display: inline-flex;
+    }
+    
+    .nav-menu .lang-toggle-btn {
         margin: 0.5rem auto;
         display: inline-flex;
     }
