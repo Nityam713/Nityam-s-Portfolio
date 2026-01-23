@@ -19,6 +19,7 @@
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/spaceship.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -32,14 +33,64 @@
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 <li class="nav-item">
-                    <a href="assets/resume/Nityam-Resume(2025-10-07).pdf" download="Nityam-Resume(2025-10-07).pdf" class="resume-download-btn" aria-label="Download Resume">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        <span>Resume</span>
-                    </a>
+                    <div class="resume-dropdown">
+                        <a href="assets/resume/Nityam_resume_eng.pdf" download="Nityam_resume_eng.pdf" class="resume-download-btn" aria-label="Download Resume">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>Resume</span>
+                            <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="resume-dropdown-menu">
+                            <a href="assets/resume/Nityam_resume_eng.pdf" download="Nityam_resume_eng.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">English Resume</span>
+                                    <span class="resume-item-desc">English version</span>
+                                </div>
+                            </a>
+                            <a href="assets/resume/Nityam_履歴書.pdf" download="Nityam_履歴書.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">履歴書 (Japanese Resume)</span>
+                                    <span class="resume-item-desc">Japanese resume format</span>
+                                </div>
+                            </a>
+                            <a href="assets/resume/Nityam_スキルシート.pdf" download="Nityam_スキルシート.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">スキルシート (Skill Sheet)</span>
+                                    <span class="resume-item-desc">Japanese skill sheet</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="index-jp.html" class="lang-toggle-btn" aria-label="Switch Language">
@@ -134,6 +185,33 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-1">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+            <div class="spaceship spaceship-2 spaceship-reverse">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -174,6 +252,26 @@
 
     <!-- Skills Section -->
     <section id="skills" class="skills section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-3">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <!-- <p class="section-subtitle">Technologies and tools I work with</p> -->
@@ -308,6 +406,21 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-4 spaceship-reverse">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
             
@@ -392,6 +505,26 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-1">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <!-- <p class="section-subtitle">Some of my recent work</p> -->
@@ -445,7 +578,7 @@
                             Yorozu Data is a fast, affordable platform delivering human-verified, real-time business data across Japan.
                         </p>
                         <div class="project-tech">
-                            <a href="https://re-view.jp/corporate/#com05:~:text=%E3%82%8C%E3%81%9F%E3%81%A8%E3%81%8D-,%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%BD%E3%83%AA%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%0A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2,Handa%20Nityam,-%E3%82%A4%E3%83%B3%E3%83%89%E5%87%BA%E8%BA%AB%E3%80%82Amazon" target="_blank" rel="noopener noreferrer" class="tech-tag" style="cursor: pointer;">Review Inc.</a>
+                            <a href="https://re-view.jp/" target="_blank" rel="noopener noreferrer" class="tech-tag" style="cursor: pointer;">Review Inc.</a>
                             <span class="tech-tag">LAMP Stack</span>
                             <span class="tech-tag">Docker</span>
                             <span class="tech-tag">AWS</span>
@@ -546,6 +679,21 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-2">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <p class="contact-intro">
@@ -624,7 +772,7 @@
             <p class="footer-text">
                 Designed & Built by <strong>Nityam Handa</strong>
             </p>
-            <p class="footer-copyright">© 2025 all rights reserved</p>
+            <p class="footer-copyright">© 2026 all rights reserved</p>
         </div>
     </footer>
 

@@ -1,0 +1,280 @@
+/* ===== STAR WARS SPACESHIP EFFECT ===== */
+
+.spaceship-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.spaceship {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    opacity: 0.6;
+    animation: spaceship-fly 25s linear infinite;
+}
+
+/* X-Wing Fighter Style */
+.x-wing {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.x-wing-body {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 15px;
+    background: linear-gradient(135deg, rgba(200, 200, 200, 0.8) 0%, rgba(150, 150, 150, 0.6) 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+.x-wing-wing-top {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 25px;
+    background: linear-gradient(180deg, rgba(100, 255, 218, 0.8) 0%, transparent 100%);
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.6);
+}
+
+.x-wing-wing-bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 25px;
+    background: linear-gradient(0deg, rgba(100, 255, 218, 0.8) 0%, transparent 100%);
+    box-shadow: 0 0 8px rgba(100, 255, 218, 0.6);
+}
+
+.x-wing-wing-left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(0, 245, 255, 0.7) 0%, transparent 100%);
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+}
+
+.x-wing-wing-right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(270deg, rgba(0, 245, 255, 0.7) 0%, transparent 100%);
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.5);
+}
+
+.x-wing-cockpit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.9) 0%, transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(100, 255, 218, 0.8);
+}
+
+.x-wing-engine {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(255, 0, 214, 0.9) 0%, transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 0, 214, 0.7);
+    animation: engine-pulse 1s ease-in-out infinite;
+}
+
+.x-wing-engine-right {
+    left: auto;
+    right: 20%;
+}
+
+/* TIE Fighter Style (Alternative) */
+.tie-fighter {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.tie-cockpit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(100, 100, 100, 0.8) 0%, rgba(50, 50, 50, 0.6) 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.6);
+    border: 2px solid rgba(100, 255, 218, 0.4);
+}
+
+.tie-wing-left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    border: 3px solid rgba(200, 200, 200, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+.tie-wing-right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    border: 3px solid rgba(200, 200, 200, 0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+/* Spaceship Animations */
+@keyframes spaceship-fly {
+    0% {
+        left: -150px;
+        top: 20%;
+        transform: rotate(-15deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    45% {
+        top: 15%;
+        transform: rotate(-10deg);
+    }
+    50% {
+        top: 10%;
+        transform: rotate(0deg);
+    }
+    55% {
+        top: 15%;
+        transform: rotate(10deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        left: calc(100% + 150px);
+        top: 20%;
+        transform: rotate(15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes engine-pulse {
+    0%, 100% {
+        opacity: 0.9;
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.2);
+    }
+}
+
+/* Multiple spaceships with different timings */
+.spaceship-1 {
+    animation: spaceship-fly 25s linear infinite;
+    animation-delay: 0s;
+}
+
+.spaceship-2 {
+    animation: spaceship-fly 30s linear infinite;
+    animation-delay: 8s;
+    top: 60% !important;
+}
+
+.spaceship-3 {
+    animation: spaceship-fly 35s linear infinite;
+    animation-delay: 15s;
+    top: 80% !important;
+}
+
+.spaceship-4 {
+    animation: spaceship-fly 28s linear infinite;
+    animation-delay: 22s;
+    top: 40% !important;
+}
+
+/* Reverse direction spaceships */
+.spaceship-reverse {
+    animation: spaceship-fly-reverse 30s linear infinite;
+}
+
+@keyframes spaceship-fly-reverse {
+    0% {
+        right: -150px;
+        top: 30%;
+        transform: rotate(15deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.6;
+    }
+    45% {
+        top: 35%;
+        transform: rotate(10deg);
+    }
+    50% {
+        top: 40%;
+        transform: rotate(0deg);
+    }
+    55% {
+        top: 35%;
+        transform: rotate(-10deg);
+    }
+    95% {
+        opacity: 0.6;
+    }
+    100% {
+        right: calc(100% + 150px);
+        top: 30%;
+        transform: rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .spaceship {
+        width: 80px;
+        height: 40px;
+        opacity: 0.4;
+    }
+    
+    .spaceship-2,
+    .spaceship-3,
+    .spaceship-4 {
+        display: none; /* Show only one spaceship on mobile for performance */
+    }
+}
+

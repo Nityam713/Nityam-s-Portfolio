@@ -98,11 +98,47 @@ if (hamburger && navMenu) {
         link.addEventListener('click', closeMenu);
     });
     
-    // Also close menu when clicking resume button
-    const resumeBtn = document.querySelector('.resume-download-btn');
-    if (resumeBtn) {
-        resumeBtn.addEventListener('click', closeMenu);
-    }
+    // Also close menu when clicking resume dropdown items
+    const resumeDropdownItems = document.querySelectorAll('.resume-dropdown-item');
+    resumeDropdownItems.forEach(item => {
+        item.addEventListener('click', closeMenu);
+    });
+}
+
+// ===== RESUME DROPDOWN MENU =====
+const resumeDropdown = document.querySelector('.resume-dropdown');
+if (resumeDropdown) {
+    const dropdownBtn = resumeDropdown.querySelector('.resume-download-btn');
+    const dropdownMenu = resumeDropdown.querySelector('.resume-dropdown-menu');
+    const dropdownItems = dropdownMenu.querySelectorAll('.resume-dropdown-item');
+    
+    // Toggle dropdown on button click (prevent default download)
+    dropdownBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        resumeDropdown.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking on a menu item
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            resumeDropdown.classList.remove('active');
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!resumeDropdown.contains(e.target)) {
+            resumeDropdown.classList.remove('active');
+        }
+    });
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && resumeDropdown.classList.contains('active')) {
+            resumeDropdown.classList.remove('active');
+        }
+    });
 }
 
 // Mobile menu styles are now in CSS file
@@ -373,8 +409,4 @@ document.addEventListener('DOMContentLoaded', () => {
         new ProjectPagination();
     }
 });
-
-// ===== CONSOLE MESSAGE =====
-console.log('%c Nityam Handa - Portfolio ', 'background: #64ffda; color: #0a192f; font-size: 16px; font-weight: bold; padding: 10px;');
-console.log('%c Built with ❤️ using HTML, CSS, and vanilla JavaScript ', 'background: #112240; color: #64ffda; font-size: 12px; padding: 5px;');
 

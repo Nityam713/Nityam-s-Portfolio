@@ -19,6 +19,7 @@
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/spaceship.css">
     <style>
         body, h1, h2, h3, h4, h5, h6, p, a, span, li {
             font-family: 'Noto Sans JP', 'Inter', sans-serif;
@@ -37,14 +38,64 @@
                 <li class="nav-item"><a href="#projects" class="nav-link">プロジェクト</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">お問い合わせ</a></li>
                 <li class="nav-item">
-                    <a href="assets/resume/Nityam-Resume(2025-10-07).pdf" download="Nityam-Resume(2025-10-07).pdf" class="resume-download-btn" aria-label="履歴書をダウンロード">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        <span>履歴書</span>
-                    </a>
+                    <div class="resume-dropdown">
+                        <a href="assets/resume/Nityam_履歴書.pdf" download="Nityam_履歴書.pdf" class="resume-download-btn" aria-label="履歴書をダウンロード">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span>履歴書</span>
+                            <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="resume-dropdown-menu">
+                            <a href="assets/resume/Nityam_履歴書.pdf" download="Nityam_履歴書.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">履歴書</span>
+                                    <span class="resume-item-desc">日本語履歴書</span>
+                                </div>
+                            </a>
+                            <a href="assets/resume/Nityam_スキルシート.pdf" download="Nityam_スキルシート.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">スキルシート</span>
+                                    <span class="resume-item-desc">日本語スキルシート</span>
+                                </div>
+                            </a>
+                            <a href="assets/resume/Nityam_resume_eng.pdf" download="Nityam_resume_eng.pdf" class="resume-dropdown-item">
+                                <span class="resume-item-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10 9 9 9 8 9"></polyline>
+                                    </svg>
+                                </span>
+                                <div>
+                                    <span class="resume-item-title">English Resume</span>
+                                    <span class="resume-item-desc">英語版履歴書</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a href="index.html" class="lang-toggle-btn" aria-label="言語を切り替える">
@@ -138,6 +189,33 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-1">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+            <div class="spaceship spaceship-2 spaceship-reverse">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">自己紹介</h2>
             <div class="about-content">
@@ -178,6 +256,26 @@
 
     <!-- Skills Section -->
     <section id="skills" class="skills section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-3">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">技術スキル</h2>
             
@@ -311,6 +409,21 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-4 spaceship-reverse">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">職務経験</h2>
             
@@ -395,6 +508,26 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-1">
+                <div class="x-wing">
+                    <div class="x-wing-body"></div>
+                    <div class="x-wing-wing-top"></div>
+                    <div class="x-wing-wing-bottom"></div>
+                    <div class="x-wing-wing-left"></div>
+                    <div class="x-wing-wing-right"></div>
+                    <div class="x-wing-cockpit"></div>
+                    <div class="x-wing-engine"></div>
+                    <div class="x-wing-engine x-wing-engine-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">注目プロジェクト</h2>
             
@@ -548,6 +681,21 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
+        <div class="starfield-bg">
+            <div class="stars stars-1"></div>
+            <div class="stars stars-2"></div>
+            <div class="stars stars-3"></div>
+            <div class="light-streaks"></div>
+        </div>
+        <div class="spaceship-container">
+            <div class="spaceship spaceship-2">
+                <div class="tie-fighter">
+                    <div class="tie-cockpit"></div>
+                    <div class="tie-wing-left"></div>
+                    <div class="tie-wing-right"></div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <h2 class="section-title">お問い合わせ</h2>
             <p class="contact-intro">
@@ -626,7 +774,7 @@
             <p class="footer-text">
                 <strong>ハンダ・ニティヤム</strong> 設計・制作
             </p>
-            <p class="footer-copyright">© 2025 All rights reserved</p>
+            <p class="footer-copyright">© 2026 All rights reserved</p>
         </div>
     </footer>
 
