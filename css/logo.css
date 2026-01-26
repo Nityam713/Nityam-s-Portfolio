@@ -1,0 +1,395 @@
+/* ===== INTERACTIVE SPACE LOGO STYLES ===== */
+
+/* CSS Variables for Logo */
+:root {
+    --logo-size: 50px;
+    --logo-size-mobile: 40px;
+    --logo-glow-color: rgba(100, 255, 218, 0.6);
+    --logo-glow-hover: rgba(100, 255, 218, 0.9);
+}
+
+/* Logo Container */
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    position: relative;
+    transition: transform var(--transition-base);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0;
+    line-height: 0;
+    overflow: visible;
+}
+
+/* Glow Ring Effect (Pseudo-element) */
+.nav-logo::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    opacity: 0;
+    transition: all 0.4s ease;
+    transform: scale(1);
+    pointer-events: none;
+}
+
+.nav-logo:hover::before {
+    border-color: var(--accent);
+    opacity: 0.6;
+    transform: scale(1.5);
+    box-shadow: 0 0 20px var(--logo-glow-hover);
+}
+
+/* Logo SVG Container */
+.logo-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 0 8px var(--logo-glow-color));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center center;
+}
+
+/* Gentle Float Animation */
+@keyframes logo-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-3px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-2deg);
+    }
+}
+
+/* Rotate Animation */
+@keyframes logo-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulse Glow Animation */
+@keyframes logo-pulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px var(--logo-glow-color)) drop-shadow(0 0 12px var(--logo-glow-color));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px var(--logo-glow-hover)) drop-shadow(0 0 30px var(--logo-glow-hover));
+    }
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Star Twinkle */
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Star Orbit */
+@keyframes star-orbit {
+    0% {
+        transform: rotate(0deg) translateX(15px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(15px) rotate(-360deg);
+    }
+}
+
+/* Letter Bounce */
+@keyframes letter-bounce {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-3px) scale(1.1);
+    }
+}
+
+/* Letter Spin */
+@keyframes letter-spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(180deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Planet Pulse */
+@keyframes planet-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Apply base floating animation */
+.logo-svg {
+    animation: logo-float 4s ease-in-out infinite;
+}
+
+/* Planet Circle */
+.logo-planet {
+    fill: #233554;
+    stroke: #64ffda;
+    stroke-width: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+/* Planet Ring */
+.logo-ring {
+    fill: none;
+    stroke: #64ffda;
+    stroke-width: 1.5;
+    opacity: 0.6;
+    animation: logo-rotate 15s linear infinite;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+/* Inner Ring (for more depth) */
+.logo-ring-inner {
+    fill: none;
+    stroke: #64ffda;
+    stroke-width: 1;
+    opacity: 0.4;
+    animation: logo-rotate 20s linear infinite reverse;
+    transform-origin: center;
+    transition: all 0.3s ease;
+}
+
+/* Letters NH */
+.logo-letter {
+    fill: #64ffda;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+/* Letter N */
+.logo-letter-n {
+    animation: letter-bounce 2s ease-in-out infinite;
+}
+
+/* Letter H */
+.logo-letter-h {
+    animation: letter-bounce 2s ease-in-out infinite 0.2s;
+}
+
+/* Small Stars */
+.logo-star {
+    fill: #64ffda;
+    opacity: 0.5;
+    animation: star-twinkle 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.logo-star:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.logo-star:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.logo-star:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.logo-star:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Orbiting Stars */
+.logo-star-orbit {
+    transform-origin: 25px 25px;
+    opacity: 0.6;
+}
+
+.logo-star-orbit circle {
+    fill: #64ffda;
+}
+
+.logo-star-orbit {
+    animation: star-orbit 8s linear infinite;
+}
+
+.logo-star-orbit:nth-of-type(6) {
+    animation-duration: 10s;
+    animation-delay: -2s;
+}
+
+.logo-star-orbit:nth-of-type(7) {
+    animation-duration: 12s;
+    animation-delay: -4s;
+}
+
+/* Ripple Circles */
+.logo-ripple {
+    fill: none;
+    stroke: #64ffda;
+    stroke-width: 1;
+    opacity: 0;
+    transform-origin: center;
+}
+
+/* Hover Effects */
+.nav-logo:hover .logo-svg {
+    filter: drop-shadow(0 0 20px var(--logo-glow-hover)) 
+            drop-shadow(0 0 30px var(--logo-glow-hover))
+            drop-shadow(0 0 40px rgba(100, 255, 218, 0.5));
+    transform: scale(1.15) rotate(5deg);
+    animation: logo-float 2s ease-in-out infinite, logo-pulse 1.5s ease-in-out infinite;
+}
+
+.nav-logo:hover .logo-planet {
+    fill: #112240;
+    stroke: #00f5ff;
+    stroke-width: 2.5;
+    animation: planet-pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.6));
+}
+
+.nav-logo:hover .logo-ring {
+    stroke: #00f5ff;
+    opacity: 1;
+    stroke-width: 2;
+    animation-duration: 5s;
+    filter: drop-shadow(0 0 8px rgba(0, 245, 255, 0.8));
+}
+
+.nav-logo:hover .logo-ring-inner {
+    stroke: #00f5ff;
+    opacity: 0.7;
+    animation-duration: 8s;
+}
+
+.nav-logo:hover .logo-letter {
+    fill: #00f5ff;
+    filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.8));
+}
+
+.nav-logo:hover .logo-letter-n {
+    animation: letter-bounce 1s ease-in-out infinite, letter-spin 3s linear infinite;
+}
+
+.nav-logo:hover .logo-letter-h {
+    animation: letter-bounce 1s ease-in-out infinite 0.2s, letter-spin 3s linear infinite 0.1s;
+}
+
+.nav-logo:hover .logo-star {
+    opacity: 1;
+    animation-duration: 0.8s;
+    transform: scale(1.2);
+}
+
+.nav-logo:hover .logo-star-orbit {
+    opacity: 1;
+    animation-duration: 4s;
+}
+
+.nav-logo:hover .logo-ripple {
+    animation: ripple 1.5s ease-out infinite;
+}
+
+/* Click Animation */
+.nav-logo:active .logo-svg {
+    transform: scale(0.9) rotate(-5deg);
+}
+
+.nav-logo:active .logo-planet {
+    transform: scale(0.95);
+}
+
+.nav-logo:active .logo-letter {
+    transform: scale(1.2);
+}
+
+/* Interactive States */
+.nav-logo.interactive .logo-svg {
+    animation: logo-float 3s ease-in-out infinite, logo-pulse 2s ease-in-out infinite;
+}
+
+.nav-logo.interactive .logo-planet {
+    animation: planet-pulse 2s ease-in-out infinite;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .logo-svg,
+    .logo-ring,
+    .logo-ring-inner,
+    .logo-star,
+    .logo-star-orbit,
+    .logo-letter,
+    .logo-planet {
+        animation: none !important;
+    }
+    
+    .nav-logo:hover .logo-svg {
+        animation: none !important;
+        transform: scale(1.05);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-logo {
+        width: var(--logo-size-mobile);
+        height: var(--logo-size-mobile);
+    }
+    
+    .logo-letter {
+        font-size: 14px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+    .nav-logo {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .logo-letter {
+        font-size: 12px;
+    }
+}

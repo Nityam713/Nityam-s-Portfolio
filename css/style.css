@@ -214,10 +214,8 @@ ul {
 }
 
 .nav-logo {
-    font-size: var(--fs-2xl);
-    font-weight: 700;
-    color: var(--accent);
-    font-family: var(--font-mono);
+    /* Logo styles moved to logo.css for SVG logo */
+    /* Text logo fallback removed - using SVG logo */
 }
 
 .nav-menu {

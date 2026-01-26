@@ -1,0 +1,219 @@
+/* ===== ASTRONAUT ANIMATION STYLES ===== */
+
+/* CSS Variables for repeated values */
+:root {
+    --astronaut-size: 40px;
+    --astronaut-size-mobile: 32px;
+    --astronaut-size-small: 28px;
+    --float-duration: 5s;
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.3s ease;
+}
+
+/* Base Astronaut Container - Consolidated */
+.astronaut-container {
+    position: absolute;
+    width: var(--astronaut-size);
+    height: var(--astronaut-size);
+    z-index: 1001;
+    pointer-events: none;
+    --target-x: 0px;
+    --target-y: 0px;
+    transform: translate3d(calc(-50% + var(--target-x, 0px)), calc(-50% + var(--target-y, 0px)), 0);
+    transition: transform var(--transition-smooth);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* Base Astronaut Element - Consolidated */
+.astronaut {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.6));
+    transition: filter var(--transition-fast), transform var(--transition-fast);
+    transform-origin: center center;
+    animation: float var(--float-duration) ease-in-out infinite;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Astronaut SVG Styling */
+.astronaut svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: var(--accent, #64ffda);
+    filter: drop-shadow(0 0 8px rgba(100, 255, 218, 0.6));
+    transition: all var(--transition-fast);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-6px) rotate(1.5deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-6px) rotate(-1.5deg);
+    }
+}
+
+/* Floating Animation with Reduced Motion */
+@keyframes float-reduced {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Wiggle Animation */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+/* Idle Drift Animation */
+@keyframes idle-drift {
+    0%, 100% {
+        transform: translate3d(
+            calc(-50% + var(--target-x, 0px)),
+            calc(-50% + var(--target-y, 0px)),
+            0
+        );
+    }
+    25% {
+        transform: translate3d(
+            calc(-50% + var(--target-x, 0px) + 3px),
+            calc(-50% + var(--target-y, 0px) - 2px),
+            0
+        );
+    }
+    50% {
+        transform: translate3d(
+            calc(-50% + var(--target-x, 0px)),
+            calc(-50% + var(--target-y, 0px) - 4px),
+            0
+        );
+    }
+    75% {
+        transform: translate3d(
+            calc(-50% + var(--target-x, 0px) - 3px),
+            calc(-50% + var(--target-y, 0px) - 2px),
+            0
+        );
+    }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .astronaut {
+        animation: float-reduced 3s ease-in-out infinite;
+    }
+    
+    .astronaut-container {
+        transition: transform var(--transition-fast);
+    }
+}
+
+/* Desktop: Hover-based movement */
+@media (min-width: 769px) and (hover: hover) {
+    .nav-container {
+        position: relative;
+    }
+    
+    .astronaut-container {
+        position: absolute;
+        /* left and top will be set by JavaScript */
+        transform: translate3d(
+            calc(-50% + var(--target-x, 0px)),
+            calc(-50% + var(--target-y, 0px)),
+            0
+        ) !important;
+        animation: none;
+    }
+    
+    /* Enhanced glow and scale on hover - Consolidated */
+    .nav-item:hover ~ .astronaut-container .astronaut,
+    .nav-item .nav-link:hover ~ .astronaut-container .astronaut,
+    .resume-dropdown:hover ~ .astronaut-container .astronaut,
+    .nav-item:hover ~ .astronaut-container .astronaut svg,
+    .resume-dropdown:hover ~ .astronaut-container .astronaut svg {
+        filter: drop-shadow(0 0 14px rgba(100, 255, 218, 0.9)) brightness(1.2);
+        transform: scale(1.1);
+    }
+    
+    /* Click animations - Consolidated */
+    .astronaut-container.clicked .astronaut {
+        animation: float var(--float-duration) ease-in-out infinite, pulse 0.6s ease-out;
+    }
+    
+    .astronaut-container.clicked .astronaut svg {
+        animation: float var(--float-duration) ease-in-out infinite, pulse 0.6s ease-out, wiggle 0.5s ease-in-out;
+    }
+    
+    /* Idle state */
+    .astronaut-container.idle {
+        animation: idle-drift 8s ease-in-out infinite;
+    }
+    
+    /* Performance: only use will-change when actively moving */
+    .astronaut-container:not(.idle) {
+        will-change: transform;
+    }
+    
+    .astronaut-container.idle {
+        will-change: auto;
+    }
+}
+
+/* Mobile: Disable hover movement, keep floating */
+@media (max-width: 768px), (hover: none) {
+    .astronaut-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        left: auto !important;
+        transform: translate3d(0, 0, 0) !important;
+        width: var(--astronaut-size-mobile);
+        height: var(--astronaut-size-mobile);
+        --target-x: 0px !important;
+        --target-y: 0px !important;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+    .astronaut-container {
+        width: var(--astronaut-size-small);
+        height: var(--astronaut-size-small);
+        top: 15px;
+        right: 15px;
+    }
+}

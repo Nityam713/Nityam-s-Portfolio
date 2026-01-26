@@ -20,12 +20,45 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/spaceship.css">
+    <link rel="stylesheet" href="css/astronaut.css">
+    <link rel="stylesheet" href="css/logo.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="https://nityam713.github.io/Nityam-s-Portfolio/" target="_blank" rel="noopener noreferrer" class="nav-logo">NH</a>
+            <a href="https://nityam713.github.io/Nityam-s-Portfolio/" target="_blank" rel="noopener noreferrer" class="nav-logo" aria-label="Nityam Handa Portfolio" id="site-logo">
+                <svg class="logo-svg" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background Stars -->
+                    <circle class="logo-star" cx="10" cy="10" r="1" />
+                    <circle class="logo-star" cx="40" cy="12" r="0.8" />
+                    <circle class="logo-star" cx="42" cy="42" r="1.2" />
+                    <circle class="logo-star" cx="8" cy="40" r="0.9" />
+                    
+                    <!-- Orbiting Stars -->
+                    <g class="logo-star-orbit" transform="translate(25, 25)">
+                        <circle r="1" cx="15" cy="0" />
+                    </g>
+                    <g class="logo-star-orbit" transform="translate(25, 25)">
+                        <circle r="1.2" cx="0" cy="15" />
+                    </g>
+                    
+                    <!-- Ripple Effects -->
+                    <circle class="logo-ripple" cx="25" cy="25" r="18" />
+                    <circle class="logo-ripple" cx="25" cy="25" r="18" style="animation-delay: 0.5s;" />
+                    
+                    <!-- Planet Circle -->
+                    <circle class="logo-planet" cx="25" cy="25" r="18" />
+                    
+                    <!-- Rotating Rings -->
+                    <circle class="logo-ring" cx="25" cy="25" r="20" />
+                    <circle class="logo-ring-inner" cx="25" cy="25" r="16" />
+                    
+                    <!-- Letters NH (Centered) -->
+                    <text class="logo-letter logo-letter-n" x="20" y="30" text-anchor="middle" dominant-baseline="middle">N</text>
+                    <text class="logo-letter logo-letter-h" x="30" y="30" text-anchor="middle" dominant-baseline="middle">H</text>
+                </svg>
+            </a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
@@ -103,6 +136,53 @@
                     </a>
                 </li>
             </ul>
+            <!-- Floating Astronaut -->
+            <div class="astronaut-container" id="astronaut">
+                <div class="astronaut">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Cartoon-style Astronaut -->
+                        <!-- Helmet (bigger, more rounded) -->
+                        <circle cx="50" cy="32" r="28" fill="rgba(100, 255, 218, 0.15)" stroke="currentColor" stroke-width="2" opacity="0.95"/>
+                        <circle cx="50" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.85"/>
+                        
+                        <!-- Big expressive visor (like cartoon eyes) -->
+                        <ellipse cx="50" cy="32" rx="18" ry="14" fill="rgba(0, 245, 255, 0.4)" stroke="currentColor" stroke-width="2" opacity="0.95"/>
+                        <!-- Visor reflection/shine -->
+                        <ellipse cx="45" cy="28" rx="6" ry="4" fill="rgba(255, 255, 255, 0.55)"/>
+                        
+                        <!-- Cheeky smile visible through visor -->
+                        <path d="M 42 36 Q 50 40 58 36" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+                        
+                        <!-- Body (more rounded, chubby cartoon style) -->
+                        <ellipse cx="50" cy="62" rx="18" ry="22" fill="rgba(100, 255, 218, 0.12)" stroke="currentColor" stroke-width="2" opacity="0.95"/>
+                        
+                        <!-- Chest panel/details -->
+                        <ellipse cx="50" cy="58" rx="10" ry="8" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="50" cy="58" r="3" fill="currentColor" opacity="0.5"/>
+                        
+                        <!-- Arms (more curved, expressive) -->
+                        <path d="M 32 58 Q 20 65 18 72" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+                        <circle cx="18" cy="72" r="4" fill="currentColor" opacity="0.85"/>
+                        <path d="M 68 58 Q 80 65 82 72" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+                        <circle cx="82" cy="72" r="4" fill="currentColor" opacity="0.85"/>
+                        
+                        <!-- Legs (bent, floating pose) -->
+                        <path d="M 42 82 Q 38 90 35 95" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+                        <circle cx="35" cy="95" r="3.5" fill="currentColor" opacity="0.85"/>
+                        <path d="M 58 82 Q 62 90 65 95" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+                        <circle cx="65" cy="95" r="3.5" fill="currentColor" opacity="0.85"/>
+                        
+                        <!-- Backpack (bigger, more prominent) -->
+                        <ellipse cx="68" cy="60" rx="10" ry="14" fill="rgba(100, 255, 218, 0.22)" stroke="currentColor" stroke-width="2" opacity="0.95"/>
+                        <rect x="66" y="58" width="4" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+                        <rect x="66" y="64" width="4" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+                        
+                        <!-- Stars/decorations (cartoon style) -->
+                        <path d="M 25 25 L 27 30 L 32 30 L 28 33 L 30 38 L 25 35 L 20 38 L 22 33 L 18 30 L 23 30 Z" fill="currentColor" opacity="0.35"/>
+                        <path d="M 75 25 L 76 28 L 79 28 L 77 30 L 78 33 L 75 31 L 72 33 L 73 30 L 71 28 L 74 28 Z" fill="currentColor" opacity="0.3"/>
+                    </svg>
+                </div>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>

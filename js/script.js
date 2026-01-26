@@ -61,12 +61,8 @@ if (hamburger && navMenu) {
         e.preventDefault();
         e.stopPropagation();
         
-        console.log('Hamburger clicked!'); // Debug log
-        
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
-        
-        console.log('Menu active:', navMenu.classList.contains('active')); // Debug log
         
         // Toggle hamburger animation
         const bars = hamburger.querySelectorAll('.bar');
@@ -409,4 +405,458 @@ document.addEventListener('DOMContentLoaded', () => {
         new ProjectPagination();
     }
 });
+
+// ===== ASTRONAUT NAVIGATION ANIMATION =====
+(function() {
+    'use strict';
+    
+    // Wait for DOM to be fully ready
+    const initAstronaut = () => {
+        const astronaut = document.getElementById('astronaut');
+        const navContainer = document.querySelector('.nav-container');
+        
+        if (!astronaut || !navContainer) {
+            return;
+        }
+        
+        // Check if reduced motion is preferred
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        // Check if device supports hover (desktop)
+        const checkIsDesktop = () => {
+            return window.matchMedia('(min-width: 769px) and (hover: hover)').matches;
+        };
+        
+        let isDesktop = checkIsDesktop();
+        let userInteracting = false;
+        let interactionTimeout = null;
+        let idleTimeout = null;
+        let lastPosition = { x: 0, y: 0 };
+        let animationFrameId = null;
+        let pendingPosition = null;
+        let hoverThrottleTimeout = null;
+        let currentHoverTarget = null;
+        
+        // Helper: Clear all timeouts
+        const clearAllTimeouts = () => {
+            if (hoverThrottleTimeout) {
+                clearTimeout(hoverThrottleTimeout);
+                hoverThrottleTimeout = null;
+            }
+            if (interactionTimeout) {
+                clearTimeout(interactionTimeout);
+            }
+            if (idleTimeout) {
+                clearTimeout(idleTimeout);
+            }
+        };
+        
+        // Helper: Cancel pending animations
+        const cancelPendingAnimations = () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        };
+        
+        // Get initial center position of nav menu
+        const getNavMenuCenter = () => {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu) return { x: 0, y: 0 };
+            
+            const menuRect = navMenu.getBoundingClientRect();
+            const containerRect = navContainer.getBoundingClientRect();
+            
+            return {
+                x: menuRect.left + menuRect.width / 2 - containerRect.left,
+                y: menuRect.top + menuRect.height / 2 - containerRect.top
+            };
+        };
+        
+        // Calculate target position for astronaut
+        const calculateTargetPosition = (element) => {
+            const elementRect = element.getBoundingClientRect();
+            const containerRect = navContainer.getBoundingClientRect();
+            const center = getNavMenuCenter();
+            
+            // Position astronaut close to nav item for clear visual association
+            const offset = 8; // Small offset to keep astronaut mostly visible
+            const targetX = (elementRect.left - offset) - containerRect.left - center.x;
+            const targetY = (elementRect.top + elementRect.height / 2) - containerRect.top - center.y;
+            
+            return { x: targetX, y: targetY };
+        };
+        
+        // Smooth movement using requestAnimationFrame
+        const updateAstronautPosition = () => {
+            if (pendingPosition) {
+                const { targetX, targetY, isUserInteraction, isClick } = pendingPosition;
+                pendingPosition = null;
+                
+                // Check if position actually changed significantly (larger threshold to reduce jitter)
+                const positionChanged = Math.abs(targetX - lastPosition.x) > 2 || Math.abs(targetY - lastPosition.y) > 2;
+                
+                if (positionChanged) {
+                    // Remove idle class smoothly
+                    astronaut.classList.remove('idle');
+                    
+                    // Update position using CSS variables (smooth transition)
+                    astronaut.style.setProperty('--target-x', `${targetX}px`);
+                    astronaut.style.setProperty('--target-y', `${targetY}px`);
+                    lastPosition = { x: targetX, y: targetY };
+                }
+                
+                // Handle click animation (only on actual clicks, not rapid hovers)
+                if (isClick) {
+                    astronaut.classList.add('clicked');
+                    setTimeout(() => {
+                        astronaut.classList.remove('clicked');
+                    }, 600);
+                }
+                
+                // Mark as user interaction
+                if (isUserInteraction) {
+                    userInteracting = true;
+                    clearAllTimeouts();
+                    astronaut.classList.remove('idle');
+                    
+                    // Reset flag after 3 seconds of no interaction, then add idle state
+                    interactionTimeout = setTimeout(() => {
+                        userInteracting = false;
+                        idleTimeout = setTimeout(() => {
+                            if (!userInteracting) {
+                                astronaut.classList.add('idle');
+                            }
+                        }, 1000);
+                    }, 3000);
+                }
+            }
+            animationFrameId = null;
+        };
+        
+        // Move astronaut to target position (throttled with requestAnimationFrame)
+        const moveAstronaut = (targetX, targetY, isUserInteraction = false, isClick = false) => {
+            if (!isDesktop || prefersReducedMotion) return;
+            
+            // Store pending position (overwrites previous if rapid hovers)
+            pendingPosition = { targetX, targetY, isUserInteraction, isClick };
+            
+            // Schedule update on next animation frame (throttles rapid updates)
+            if (!animationFrameId) {
+                animationFrameId = requestAnimationFrame(updateAstronautPosition);
+            }
+        };
+        
+        // Throttled hover handler to prevent jitter
+        const handleHover = (navItem) => {
+            if (hoverThrottleTimeout) {
+                clearTimeout(hoverThrottleTimeout);
+            }
+            
+            if (animationFrameId && currentHoverTarget !== navItem) {
+                cancelPendingAnimations();
+            }
+            
+            currentHoverTarget = navItem;
+            
+            // Throttle hover updates (30ms = ~33fps)
+            hoverThrottleTimeout = setTimeout(() => {
+                const position = calculateTargetPosition(navItem);
+                moveAstronaut(position.x, position.y, true);
+                hoverThrottleTimeout = null;
+            }, 30);
+        };
+        
+        // Unified click handler
+        const handleClick = (element) => {
+            clearAllTimeouts();
+            cancelPendingAnimations();
+            const position = calculateTargetPosition(element);
+            moveAstronaut(position.x, position.y, true, true);
+        };
+        
+        // Initialize astronaut position to center of nav menu
+        const initializeAstronaut = () => {
+            if (!isDesktop) return;
+            
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu) return;
+            
+            const menuRect = navMenu.getBoundingClientRect();
+            const containerRect = navContainer.getBoundingClientRect();
+            
+            // Calculate center of nav menu relative to nav container
+            const centerX = menuRect.left + menuRect.width / 2 - containerRect.left;
+            const centerY = menuRect.top + menuRect.height / 2 - containerRect.top;
+            
+            // Set initial position using left/top (astronaut will be centered on this point)
+            astronaut.style.left = `${centerX}px`;
+            astronaut.style.top = `${centerY}px`;
+        };
+        
+        // Setup hover and click event listeners
+        const setupHoverListeners = () => {
+            if (!isDesktop || prefersReducedMotion) return;
+            
+            // Get all navigation items (li elements)
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            // Handle each nav item - hover and click (with throttling)
+            navItems.forEach(navItem => {
+                const link = navItem.querySelector('a');
+                if (!link) return;
+                
+                // Move astronaut on hover (using global throttle)
+                navItem.addEventListener('mouseenter', () => {
+                    handleHover(navItem);
+                });
+                
+                // Move astronaut on click and keep it there
+                link.addEventListener('click', () => {
+                    handleClick(navItem);
+                });
+            });
+            
+            // Handle resume dropdown separately
+            const resumeDropdown = document.querySelector('.resume-dropdown');
+            if (resumeDropdown) {
+                const resumeBtn = resumeDropdown.querySelector('.resume-download-btn');
+                
+                resumeDropdown.addEventListener('mouseenter', () => {
+                    handleHover(resumeDropdown);
+                });
+                
+                // Handle resume dropdown clicks
+                if (resumeBtn) {
+                    resumeBtn.addEventListener('click', () => {
+                        handleClick(resumeDropdown);
+                    });
+                }
+                
+                // Handle resume dropdown menu items click
+                resumeDropdown.querySelectorAll('.resume-dropdown-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        handleClick(resumeDropdown);
+                    });
+                });
+            }
+            
+            // Don't reset on nav container mouseleave - keep astronaut on last hovered/clicked item
+        };
+        
+        // Update astronaut position based on active section (on scroll)
+        const updateAstronautOnScroll = () => {
+            if (!isDesktop || prefersReducedMotion || userInteracting) return;
+            
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navHeight - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            // Find corresponding nav item and move astronaut there (only if user not interacting)
+            if (currentSection && !userInteracting) {
+                navLinks.forEach((link) => {
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        const navItem = link.closest('.nav-item');
+                        if (navItem) {
+                            const position = calculateTargetPosition(navItem);
+                            moveAstronaut(position.x, position.y, false);
+                        }
+                    }
+                });
+            }
+        };
+        
+        // Initialize everything
+        const init = () => {
+            isDesktop = checkIsDesktop();
+            if (isDesktop && !prefersReducedMotion) {
+                initializeAstronaut();
+                setupHoverListeners();
+                
+                // Update astronaut position on scroll (with debounce)
+                let scrollTimeout;
+                window.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        updateAstronautOnScroll();
+                    }, 150);
+                });
+                
+                // Initial position update based on current section
+                setTimeout(() => {
+                    updateAstronautOnScroll();
+                }, 300);
+            }
+        };
+        
+        // Run initialization
+        init();
+        
+        // Handle window resize to recalculate positions
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                isDesktop = checkIsDesktop();
+                if (isDesktop && !prefersReducedMotion) {
+                    initializeAstronaut();
+                    // Recalculate position after resize
+                    setTimeout(() => {
+                        updateAstronautOnScroll();
+                    }, 100);
+                }
+            }, 250);
+        });
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAstronaut);
+    } else {
+        // DOM already loaded, run immediately
+        initAstronaut();
+    }
+})();
+
+// ===== INTERACTIVE LOGO ENHANCEMENTS =====
+(function() {
+    'use strict';
+    
+    const initLogoInteractions = () => {
+        const logo = document.getElementById('site-logo');
+        const logoSvg = logo?.querySelector('.logo-svg');
+        const logoPlanet = logo?.querySelector('.logo-planet');
+        const logoLetters = logo?.querySelectorAll('.logo-letter');
+        
+        if (!logo || !logoSvg) return;
+        
+        // Mouse move tracking for tilt effect
+        logo.addEventListener('mousemove', (e) => {
+            const rect = logo.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const deltaX = (e.clientX - centerX) / (rect.width / 2);
+            const deltaY = (e.clientY - centerY) / (rect.height / 2);
+            
+            const rotateX = deltaY * 10;
+            const rotateY = deltaX * -10;
+            
+            logoSvg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.1)`;
+        });
+        
+        // Reset on mouse leave
+        logo.addEventListener('mouseleave', () => {
+            logoSvg.style.transform = '';
+            logo.classList.remove('interactive');
+        });
+        
+        // Add interactive class on hover
+        logo.addEventListener('mouseenter', () => {
+            logo.classList.add('interactive');
+        });
+        
+        // Click ripple effect
+        logo.addEventListener('click', (e) => {
+            const rect = logo.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Create ripple element
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: rgba(100, 255, 218, 0.6);
+                left: ${x}px;
+                top: ${y}px;
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                animation: ripple-expand 0.6s ease-out;
+                z-index: 1000;
+            `;
+            
+            // Add ripple animation if not exists
+            if (!document.getElementById('ripple-style')) {
+                const style = document.createElement('style');
+                style.id = 'ripple-style';
+                style.textContent = `
+                    @keyframes ripple-expand {
+                        0% {
+                            transform: translate(-50%, -50%) scale(0);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translate(-50%, -50%) scale(10);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            logo.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Letter animation on click
+            logoLetters.forEach((letter, index) => {
+                setTimeout(() => {
+                    letter.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        letter.style.transform = '';
+                    }, 200);
+                }, index * 50);
+            });
+        });
+        
+        // Periodic subtle animations when idle
+        let idleAnimationInterval;
+        const startIdleAnimations = () => {
+            idleAnimationInterval = setInterval(() => {
+                if (!logo.matches(':hover')) {
+                    logoLetters.forEach((letter, index) => {
+                        setTimeout(() => {
+                            letter.style.transform = 'translateY(-2px)';
+                            setTimeout(() => {
+                                letter.style.transform = '';
+                            }, 300);
+                        }, index * 100);
+                    });
+                }
+            }, 5000);
+        };
+        
+        startIdleAnimations();
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (idleAnimationInterval) {
+                clearInterval(idleAnimationInterval);
+            }
+        });
+    };
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLogoInteractions);
+    } else {
+        initLogoInteractions();
+    }
+})();
 
