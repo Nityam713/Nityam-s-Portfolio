@@ -1046,12 +1046,19 @@ ul {
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.15) 20%, transparent 40%),
-        linear-gradient(180deg, transparent 30%, rgba(0, 245, 255, 0.12) 50%, transparent 70%),
-        linear-gradient(180deg, transparent 60%, rgba(255, 0, 214, 0.1) 80%, transparent 100%);
+        linear-gradient(180deg, transparent 0%, rgba(100, 255, 218, 0.2) 20%, transparent 40%),
+        linear-gradient(180deg, transparent 30%, rgba(0, 245, 255, 0.18) 50%, transparent 70%),
+        linear-gradient(180deg, transparent 60%, rgba(255, 0, 214, 0.15) 80%, transparent 100%),
+        linear-gradient(180deg, transparent 10%, rgba(100, 255, 218, 0.12) 25%, transparent 50%),
+        linear-gradient(180deg, transparent 40%, rgba(0, 245, 255, 0.14) 60%, transparent 80%),
+        linear-gradient(180deg, transparent 70%, rgba(255, 0, 214, 0.12) 85%, transparent 100%),
+        linear-gradient(180deg, transparent 5%, rgba(100, 255, 218, 0.1) 35%, transparent 65%),
+        linear-gradient(180deg, transparent 50%, rgba(0, 245, 255, 0.16) 70%, transparent 90%),
+        linear-gradient(180deg, transparent 15%, rgba(255, 0, 214, 0.11) 45%, transparent 75%),
+        linear-gradient(180deg, transparent 55%, rgba(100, 255, 218, 0.13) 75%, transparent 95%);
     background-size: 100% 200%;
     animation: light-streaks-move 8s linear infinite;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 @keyframes light-streaks-move {
@@ -2200,17 +2207,26 @@ ul {
     
     /* Resume button - appears in mobile menu, no fixed positioning needed */
     
-    /* Reduce starfield animations on mobile for performance */
+    /* Make stars more visible on mobile */
     .starfield-bg {
-        opacity: 0.2;
+        opacity: 1;
     }
     
+    .stars,
+    .stars-1,
+    .stars-2,
     .stars-3 {
-        display: none;
+        opacity: 1;
     }
     
+    /* Keep all star layers visible on mobile */
+    .stars-3 {
+        display: block;
+    }
+    
+    /* Increase wavy effect on mobile */
     .light-streaks {
-        opacity: 0.3;
+        opacity: 0.7;
     }
     
     .section {
