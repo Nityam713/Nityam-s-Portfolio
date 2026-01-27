@@ -84,32 +84,16 @@
                             </svg>
                         </a>
                         <div class="resume-dropdown-menu">
-                            <a href="assets/resume/Nityam_履歴書.pdf" download="Nityam_履歴書.pdf" class="resume-dropdown-item">
+                            <a href="#" class="resume-dropdown-item resume-dropdown-item-locked" id="japanese-docs-trigger">
                                 <span class="resume-item-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                        <polyline points="14 2 14 8 20 8"></polyline>
-                                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                                        <line x1="10" y1="9" x2="8" y2="9"></line>
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                     </svg>
                                 </span>
                                 <div>
-                                    <span class="resume-item-title">履歴書</span>
-                                    <span class="resume-item-desc">日本語履歴書</span>
-                                </div>
-                            </a>
-                            <a href="assets/resume/Nityam_スキルシート.pdf" download="Nityam_スキルシート.pdf" class="resume-dropdown-item">
-                                <span class="resume-item-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                                    </svg>
-                                </span>
-                                <div>
-                                    <span class="resume-item-title">スキルシート</span>
-                                    <span class="resume-item-desc">日本語スキルシート</span>
+                                    <span class="resume-item-title">履歴書 + スキルシート</span>
+                                    <span class="resume-item-desc">メールでのお問い合わせが必要です</span>
                                 </div>
                             </a>
                             <a href="assets/resume/Nityam_resume_eng.pdf" download="Nityam_resume_eng.pdf" class="resume-dropdown-item">
@@ -123,8 +107,8 @@
                                     </svg>
                                 </span>
                                 <div>
-                                    <span class="resume-item-title">English Resume</span>
-                                    <span class="resume-item-desc">英語版履歴書</span>
+                                    <span class="resume-item-title">CV</span>
+                                    <span class="resume-item-desc">PDFをダウンロード</span>
                                 </div>
                             </a>
                         </div>
@@ -319,10 +303,6 @@
                         <div class="info-item">
                             <span class="info-label">所在地</span>
                             <span class="info-value">大阪、日本</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">メール</span>
-                            <a href="mailto:nityamhanda01@gmail.com" class="info-value">nityamhanda01@gmail.com</a>
                         </div>
                         <div class="info-item">
                             <span class="info-label">言語</span>
@@ -854,9 +834,89 @@
             <p class="footer-text">
                 <strong>ハンダ・ニティヤム</strong> 設計・制作
             </p>
+            <div class="footer-links">
+                <a href="#" class="footer-blog-link" id="blog-link-trigger">ブログ</a>
+            </div>
             <p class="footer-copyright">© 2026 All rights reserved</p>
         </div>
     </footer>
+
+    <!-- Japanese Documents Modal -->
+    <div class="modal-overlay" id="japanese-docs-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="モーダルを閉じる">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </div>
+                <h2 class="modal-title">アクセスが必要です</h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message">
+                    これらの書類には個人情報が含まれています。プライバシー保護のため、履歴書およびスキルシートをご希望の場合は、メールにてお問い合わせください。
+                </p>
+                <p class="modal-submessage">
+                    お問い合わせいただきましたら、迅速に両方の書類をお送りいたします。ご理解のほど、よろしくお願いいたします。
+                </p>
+                <div class="modal-email-section">
+                    <a href="mailto:nityamhanda01@gmail.com?subject=履歴書・スキルシートのご請求" class="modal-email-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>メールでお問い合わせ</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Coming Soon Modal -->
+    <div class="modal-overlay" id="blog-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="blog-modal-close-btn" aria-label="モーダルを閉じる">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 0 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <h2 class="modal-title">ブログ近日公開</h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-message">
+                    技術、開発、そして私の経験についての洞察を共有する個人ブログを現在準備中です。お楽しみに！
+                </p>
+                <p class="modal-submessage">
+                    私の作品や最新情報は、個人ウェブサイトでご覧いただけます。
+                </p>
+                <div class="modal-email-section">
+                    <a href="#" class="modal-email-btn" id="blog-website-link" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        <span>ウェブサイトを訪問</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>

@@ -117,8 +117,16 @@ if (resumeDropdown) {
     
     // Close dropdown when clicking on a menu item
     dropdownItems.forEach(item => {
-        item.addEventListener('click', () => {
-            resumeDropdown.classList.remove('active');
+        item.addEventListener('click', (e) => {
+            // Check if it's the locked item (Japanese docs)
+            if (item.classList.contains('resume-dropdown-item-locked')) {
+                e.preventDefault();
+                e.stopPropagation();
+                resumeDropdown.classList.remove('active');
+                // Open modal will be handled separately
+            } else {
+                resumeDropdown.classList.remove('active');
+            }
         });
     });
     
@@ -136,6 +144,96 @@ if (resumeDropdown) {
         }
     });
 }
+
+// ===== JAPANESE DOCUMENTS MODAL =====
+const japaneseDocsTrigger = document.getElementById('japanese-docs-trigger');
+const japaneseDocsModal = document.getElementById('japanese-docs-modal');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+
+// Open modal when clicking the locked item
+if (japaneseDocsTrigger && japaneseDocsModal) {
+    japaneseDocsTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        japaneseDocsModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+}
+
+// Close modal when clicking close button
+if (modalCloseBtn && japaneseDocsModal) {
+    modalCloseBtn.addEventListener('click', () => {
+        japaneseDocsModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+}
+
+// Close modal when clicking outside (on overlay)
+if (japaneseDocsModal) {
+    japaneseDocsModal.addEventListener('click', (e) => {
+        if (e.target === japaneseDocsModal) {
+            japaneseDocsModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+}
+
+// Close modal on escape key (for Japanese docs modal)
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (japaneseDocsModal && japaneseDocsModal.classList.contains('active')) {
+            japaneseDocsModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        if (blogModal && blogModal.classList.contains('active')) {
+            blogModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+});
+
+// ===== BLOG COMING SOON MODAL =====
+const blogLinkTrigger = document.getElementById('blog-link-trigger');
+const blogModal = document.getElementById('blog-modal');
+const blogModalCloseBtn = document.getElementById('blog-modal-close-btn');
+const blogWebsiteLink = document.getElementById('blog-website-link');
+
+// TODO: Update this with your actual website URL
+const websiteUrl = 'https://your-website-url.com'; // Replace with your actual website URL
+
+// Set the website link href
+if (blogWebsiteLink) {
+    blogWebsiteLink.href = websiteUrl;
+}
+
+// Open modal when clicking the blog link
+if (blogLinkTrigger && blogModal) {
+    blogLinkTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        blogModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+}
+
+// Close modal when clicking close button
+if (blogModalCloseBtn && blogModal) {
+    blogModalCloseBtn.addEventListener('click', () => {
+        blogModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
+}
+
+// Close modal when clicking outside (on overlay)
+if (blogModal) {
+    blogModal.addEventListener('click', (e) => {
+        if (e.target === blogModal) {
+            blogModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+}
+
 
 // Mobile menu styles are now in CSS file
 
